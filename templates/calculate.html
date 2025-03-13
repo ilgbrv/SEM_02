@@ -1,20 +1,30 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %} Калькулятор {% endblock %} {% block
+content %}
+<h2>Введите числа и выберите операцию:</h2>
+<form action="{{ url_for('calculate') }}" method="POST">
+  <input
+    type="number"
+    name="first_number"
+    placeholder="Первое число"
+    required
+  />
+  <input
+    type="number"
+    name="second_number"
+    placeholder="Второе число"
+    required
+  />
 
-{% block title %}
-Калькулятор
-{% endblock %}
-
-{% block content %}
-        <h2>Введите числа и выберите операцию:</h2>
-        <form action="{{ url_for('calculate') }}" method="POST">
-            <input type="number" name="first_number" placeholder="Первое число" required>
-            <input type="number" name="second_number" placeholder="Второе число" required>
-
-            <button type="submit" name="operation" value="add">Сложение</button>
-            <button type="submit" name="operation" value="subtract">Вычитание</button>
-            <button type="submit" name="operation" value="multiply">Умножение</button>
-            <button type="submit" name="operation" value="divide">Деление</button>
-        </form>
-        <br>
-        <a href="/calculate"><button>Попробовать еще</button></a>
-{% endblock %}
+  <button type="submit" name="operation" value="add">Сложение</button>
+  <button type="submit" name="operation" value="subtract">Вычитание</button>
+  <button type="submit" name="operation" value="multiply">Умножение</button>
+  <button type="submit" name="operation" value="divide">Деление</button>
+  <button type="submit" name="operation" value="sqrt">
+    √ Квадратный корень
+  </button>
+</form>
+<br />
+<a href="/calculate"><button>Попробовать еще</button></a>
+{% if result is not none %}
+<h3>Результат: {{ result }}</h3>
+{% endif %} {% endblock %}
