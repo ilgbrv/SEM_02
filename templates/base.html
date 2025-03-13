@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Главная страница{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/base">Главная</a>   |
+            <a href="/image">Изображение</a>   |
+            <a href="/authorization">Авторизация</a>    |
+            <a href="/text">Текст</a>    |
+            <a href="/calculate">Калькулятор</a>    |
+            <a href="/age">Возраст</a>    |
+            <a href="/form">Форма</a>    |
+            <a href="/mail">Почта</a>    |
+        </nav>
+    </header>
+
+    <div>
+        {% block content %}
+        <h1>Добро пожаловать на сайт!</h1>
+        <h2>Введите ваше имя:</h2>
+        <form action="{{ url_for('base') }}" method="POST">
+            <input type="text" name="username" placeholder="Ваше имя" required>
+            <button type="submit">Нажми меня</button>
+        </form>
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>© 2025 Пример сайта</p>
+    </footer>
+</body>
+</html>
